@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 import { SettingsService } from "../services/SettingsService";
 
 class SettingsController {
-  static async create(request: Request, response: Response) {
+  static async create(request: Request, response: Response): Promise<Response> {
     try {
       const { chat, username } = request.body;
 
@@ -12,9 +12,9 @@ class SettingsController {
         username,
       });
 
-      response.json(setting);
+      return response.json(setting);
     } catch (error) {
-      response.json(error);
+      return response.json(error);
     }
   }
 }
