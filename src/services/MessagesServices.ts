@@ -20,6 +20,16 @@ class MessagesService {
     await messagesRepository.save(message);
     return message;
   }
+
+  async showByUser(user_id: string) {
+    const messagesRepository = getCustomRepository(MessagesRepository);
+
+    const messages = await messagesRepository.find({
+      user_id
+    });
+
+    return messages;
+  }
 }
 
 export { MessagesService };
